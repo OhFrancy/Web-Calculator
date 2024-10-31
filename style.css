@@ -1,0 +1,549 @@
+/* style.css */
+
+/* Declaring all fonts */
+@font-face {
+  font-family: 'CreamBeige';
+  src: url("font/CreamBeige.ttf") format('truetype'),
+       url("font/CreamBeige.otf") format('opentype');
+}
+@font-face 
+{
+  font-family: 'DigitalFont';
+  src: url("font/DigitalFont.ttf") format('truetype');
+}
+@font-face
+{
+  font-family: 'SmothyBubble';
+  src: url("font/SmothyBubble.otf") format('opentype');
+}
+@font-face
+{
+  font-family: 'Dear';
+  src: url("font/Dear.otf") format('truetype'),
+       url("font/Dear.ttf") format('opentype');
+}
+
+
+body,html
+{
+  background-color: rgb(49, 79, 107);
+  width: 1904px;
+  height: 910.4px;
+  margin:auto;
+}
+
+.wrapper
+{
+  width: auto;
+  height: auto;
+}
+
+.inlineTitle
+{
+  color:rgb(255, 255, 255);
+  position: absolute;
+  margin: auto;
+  width: 10em;
+  height: 1.5em;
+
+  font-family: 'CreamBeige';
+  font-size: 3.65em;
+}
+
+em
+{
+  font-family: 'CreamBeige';
+  font-style: normal;
+  color:rgb(190, 190, 190);
+}
+
+.calculatorBody
+{
+  background-color: rgb(64, 61, 61);
+  box-shadow: 0.7em 0.7em 0.7em 0.7em rgba(42, 41, 41, 0.6) inset;
+  margin-left: 33%;
+  margin-top: 0em;
+  width: 50em;
+  height: 56.4em;
+  border-style: solid;
+  border-radius: 3em 3em 4em 4em;
+  border-width: 4px;
+  border-color: rgb(29, 28, 28);
+}
+
+.outputScreen
+{
+  background-color: rgb(7, 110, 7);
+  box-shadow: 0.3em 0.3em 0.9em 0.3em rgba(6, 82, 6, 0.9) inset;
+  margin: auto;
+  margin-top: 6em;
+  width: 43.6em;
+  height: 9em;
+  border-style: solid;
+  border-radius: 1em;
+  border-width: 0.2em;
+  border-color: black;
+}
+
+p.output
+{
+  font-family: 'DigitalFont';
+  margin-right: 0.2em;
+  margin-left: 0.2em;
+  margin-top: 0.15em;
+  font-size: 7em;
+}
+
+.topCornerLastInput
+{
+  position: absolute;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  top: 6.6em;
+  left: 76em;
+  width: 9em;
+  height: 3em;
+}
+.lastInput
+{
+  font-family: 'Dear';
+  font-size: 2.5em;
+  color: rgb(3,3,3);
+}
+
+.errorOutput
+{
+  display: flex;
+  justify-content: left;
+  align-items: center ;
+  margin:auto;
+  margin-top: -9.5em;
+  width: 43.6em;
+  height: 8.5em;
+}
+.error
+{
+  margin-left: 0.4em;
+  margin-top: 1.4em;
+  font-family: 'CreamBeige';
+  font-size:3.5em;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
+  color: rgba(32, 29, 29, 0.797);
+}
+  
+/* Numbers Wrapper */
+
+.numbers
+{
+  margin: auto;
+  margin-left: 3.15em;
+  margin-top: 3.5em;
+  width: 31em;
+  height: 36em;
+}
+
+/* Numbers Declarations */
+
+/* Button one */
+
+.oneButton
+{
+  background-color: rgba(155, 155, 155, 0.785);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.5em;
+  height: 9em;
+  margin-left: 0em;
+  margin-top: 0em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.one
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Button two */
+
+.twoButton
+{
+  background-color: rgba(155, 155, 155, 0.785);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.5em;
+  height: 9em;
+  margin-left: 13.5em;
+  margin-top: -9em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.two
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Button three */
+
+.threeButton
+{
+  background-color: rgba(155, 155, 155, 0.785); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.5em;
+  height: 9em;
+  margin-left: 26.7em;
+  margin-top: -9em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.three
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Button four */
+
+.fourButton
+{
+  background-color: rgba(155, 155, 155, 0.785);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.5em;
+  height: 9em;
+  margin-left: 0em;
+  margin-top: 3em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.four
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Button five */
+
+.fiveButton
+{
+  background-color: rgba(155, 155, 155, 0.785);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.5em;
+  height: 9em;
+  margin-left: 13.5em;
+  margin-top: -9em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.five
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Button six */
+
+.sixButton
+{
+  background-color: rgba(155, 155, 155, 0.785);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.5em;
+  height: 9em;
+  margin-left:26.7em;
+  margin-top: -9em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.six
+{
+  font-family:  'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Button seven */
+
+.sevenButton
+{
+  background-color: rgba(155, 155, 155, 0.785);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.5em;
+  height: 9em;
+  margin-left: 0em;
+  margin-top: 3em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.seven
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Button eight */
+
+.eightButton
+{
+  background-color:rgba(155, 155, 155, 0.785);
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 10.5em;
+  height: 9em;
+  margin-left: 13.5em;
+  margin-top: -9em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.eight
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Button nine */
+
+.nineButton
+{
+  background-color:rgba(155, 155, 155, 0.785);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.5em;
+  height: 9em;
+  margin-left: 26.7em;
+  margin-top: -9em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.nine
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Button zero */
+
+.zeroButton
+{
+  background-color:rgba(155, 155, 155, 0.785);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.5em;
+  height: 9em;
+  margin-left: 13.5em;
+  margin-top: 1em;
+  box-shadow: 0.09em 0.09em 0.08em 0.3em rgba(41, 41, 41, 0.78) inset;
+  border-color: rgba(10, 10, 10 , 0.8);
+  border-width: 0.3em;
+  border-style:solid;
+  border-radius: 10%;
+}
+.zero
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3, 3, 3);
+  font-size: 6em;
+}
+
+/* Operators Wrapper */
+
+.operators{
+  margin-left: 34.2em;
+  margin-top: -35.8em;
+  height: 36em;
+  width: 12.6em;
+}
+
+/* Declaring Operators*
+
+/* + Sign */
+
+.plusButton
+{
+  background-color: rgba(224, 223, 223, 0.785);
+  margin-left: 1.1em;
+  margin-top: -15em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7em;
+  height: 11.6em;
+  box-shadow: 0.05em 0.05em 0.05em 0.05em rgb(101, 99, 99) inset;
+  border-color: rgba(101, 99, 99, 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.plus
+{
+  font-size: 6em;
+  color: rgb(3, 3, 3);
+  font-family: 'SmothyBubble';
+}
+
+/* - Sign */
+
+.minusButton
+{
+  background-color: rgba(224, 223, 223, 0.785);
+  margin-left: 8em;
+  margin-top: -11.6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7em;
+  height: 11.6em;
+  box-shadow: 0.05em 0.05em 0.05em 0.05em rgb(101, 99, 99) inset;
+  border-color: rgba(101, 99, 99, 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.minus
+{
+  font-family: 'SmothyBubble';
+  color: rgb(3,3,3);
+  font-size: 6em;
+}
+
+/* x Sign */
+
+.multiplyButton
+{
+  background-color: rgba(224, 223, 223, 0.785);
+  margin-left: 1.1em;
+  margin-top: 0em;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7em;
+  height: 11.6em;
+  box-shadow: 0.05em 0.05em 0.05em 0.05em rgb(101, 99, 99) inset;
+  border-color: rgba(101, 99, 99, 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.multiply
+{
+  font-family:'CreamBeige';
+  color:rgb(3,3,3);
+  font-size: 6em;
+}
+
+/* ÷ Sign */
+
+.divisionButton
+{
+  background-color: rgba(224, 223, 223, 0.785);
+  margin-left: 8em;
+  margin-top: -11.6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7em;
+  height: 11.6em;
+  box-shadow: 0.05em 0.05em 0.05em 0.05em rgb(101, 99, 99) inset;
+  border-color: rgba(101, 99, 99, 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.division
+{
+  font-family: 'CreamBeige';
+  color:rgb(3,3,3);
+  font-size:6em;
+}
+
+/* Clear Sign */
+
+.clearButton
+{
+  background-color: rgba(236, 167, 167, 0.785);
+  margin-top: 0em;
+  margin-left: 1.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14em;
+  height: 8.5em; 
+  box-shadow: 0.05em 0.05em 0.05em 0.05em rgb(101, 99, 99) inset;
+  border-color: rgba(165, 68, 68, 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.clear
+{
+  font-size: 6em;
+  color: rgb(126, 33, 33);
+  font-family: 'SmothyBubble';
+}
+
+/* Equal Sign -- Final Result */
+
+.equalButton
+{
+  background-color: rgba(224, 223, 223, 0.785);
+  margin-top:0em;
+  margin-left: 1.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14em;
+  height: 12em; 
+  box-shadow: 0.05em 0.05em 0.05em 0.05em rgb(101, 99, 99) inset;
+  border-color: rgba(101, 99, 99, 0.8);
+  border-width: 0.3em;
+  border-radius: 10%;
+}
+.equal
+{
+  font-size: 6em;
+  color: rgb(50, 50, 50);
+  font-family: 'SmothyBubble';
+}
+
+.Enter{
+  width: 0em;
+  height: 0em;
+  
+}
