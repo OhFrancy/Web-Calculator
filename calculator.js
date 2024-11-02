@@ -1,57 +1,93 @@
-// Declaring all variables and const
+// Declaring all variables
 
-const outputId = document.getElementById("output");
+const OutputId = document.getElementById("output");
 const errorId = document.getElementById("error");
 const lastInputId = document.getElementById("lastInput");
-let numberCount = 0;
-let toatal
+let beforeSign = "";
+let afterSign = "";
 let calcCount = 0;          
 let signCount = 0;
+let firstNumberCount = 0;
+let secondNumberCount = 0;
+let totalNumberCount = 0;
 let inputString = "";
-let output;
-let firstDigit, secondDigit;
+let Output;
 const divisionConverted = "&divide";
 
-// Function to assign a value when clicking a number and displaying it
-function valueAssignment(a)
-{
-    if(numberCount == 0)
-        {
-            numberCount++;
-            firstDigit = parseInt(a);
-            inputString += a;
-            outputId.innerHTML = inputString; 
-        }else if(numberCount == 1 && signCount == 1)
-        {
-            numberCount ++;
-            secondDigit = parseInt(a);
-            inputString += a;
-            outputId.innerHTML = inputString;    
-        }   
+// Function to do the correct action when clicking a non-number button
+
+function sideButtons(key){
+    switch(key){
+        case '*':
+            signAssignment('\u{00D7}')
+            break;
+        case '/':
+            signAssignment('\u{00F7}')
+            break;
+        case '=':
+            Equal();
+            break;
+        case 'Enter':
+            Equal();
+            break;
+        case 'Backspace':
+            allClear();
+            break;
+        default:
+            signAssignment(key)
+            break; 
+    }
 }
 
-// Function to assign a sign and displaying it
+// Function to assign a value when clicking a number till it reaches the maximum count and display it
+
+function valueAssignment(a)
+{
+    if(!(totalNumberCount == 11)){
+        if(signCount == 0 && !(firstNumberCount == 11))
+            {
+        
+                beforeSign += a;
+                inputString += a;
+                OutputId.innerHTML = inputString; 
+                firstNumberCount++;
+                totalNumberCount++;
+            }else if(signCount == 1 && !(secondNumberCount == 11)){
+                afterSign += a;
+                inputString += a;
+                OutputId.innerHTML = inputString;     
+                secondNumberCount++;
+                totalNumberCount++;
+            } 
+    }
+}
+
+// Function to assign a sign and display it
+
 function signAssignment(signTemp)
 {
-    if(signCount < 1 && numberCount == 1)
+    if(signCount == 0 && parseInt(beforeSign) >= 0 && !(totalNumberCount == 11))
         { 
             signCount++;
+            // If the signs are the ones in Unicode, adding it to the displayed string but changing the variable to the actual operator
             if(signTemp == '\u{00D7}'){
-                inputString += signTemp;
                 sign = "*";
             }else if (signTemp == '\u{00F7}'){
-                inputString += signTemp;
                 sign = "/";
             }else{
                 sign = signTemp;
-                inputString += sign; 
             }
-            outputId.innerHTML = inputString;
-        }else if(signCount == 0 && numberCount == 0)
+
+            inputString += signTemp;
+            OutputId.innerHTML = inputString;
+        // Throwing an 'error' if no numbers were selected before trying to add a sign
+        }else if( beforeSign == 0)
         {
+            errorId.style.fontSize = "3.4em";
             errorId.innerHTML = "Select a number first!";
             errorOverlapOutput(3000);
             allClear();
+
         }
 }
 
@@ -59,33 +95,36 @@ function signAssignment(signTemp)
 
 function errorOverlapOutput(tick)
 {
-    outputId.style.color = "rgb(7, 110, 7)";
+    OutputId.style.color = "rgb(7, 110, 7)";
     setTimeout(() => {
         errorId.innerHTML = "";
-        outputId.style.color = "rgb(3,3,3)";
+        OutputId.style.color = "rgb(3,3,3)";
     }, tick);
 }
 
 //Function that makes all the final calculations
-
+let outputRounded;
 function Equal()
 {
-    if(!(secondDigit == undefined)){
+    // Executing the code normally if the second value is not equal to nothing, else - see line 171 -
+    if(!(afterSign == "")){
         calcCount++;
-        lastA = output;
+        lastCalc = beforeSign;
+        // Switch to check for the operator and do the correspondent math
         switch(sign){
             case '+':
-                output = (firstDigit + secondDigit);
+                Output = (parseInt(beforeSign) + parseInt(afterSign));
                 break;
             case '-':
-                output = (firstDigit - secondDigit);
+                Output = (parseInt(beforeSign) - parseInt(afterSign));
                 break;
             case '*':
-                output = (firstDigit * secondDigit);
+                Output = (parseInt(beforeSign) * parseInt(afterSign));
                 break;
             case '/':
-                if(firstDigit,secondDigit != 0){
-                    output = (firstDigit / secondDigit);
+                if(beforeSign != 0 || afterSign != 0){
+                    Output = (parseFloat(beforeSign) / parseFloat(afterSign));
+                // Throw an error if dividing 0 by 0
                 }else{
                     errorId.innerHTML = "Undefined";
                     errorOverlapOutput(2500);
@@ -94,34 +133,49 @@ function Equal()
                 break;
         }
         
+        // Rounding system for recurring decimals, rounding to five significative figures
+        if(Output.toString().length > 12){
+            let round;  ``
+            round = Output.toString().split("");
+            outputRounded = round.splice(0, 7).join("");
+            OutputId.innerHTML = outputRounded;
+            beforeSign = outputRounded;
+            inputString = outputRounded;
+        }
+
         // Error when exceeding a certain size, using .length
-    
-        if(inputString.length - 1 > 10){ 
+        else if(OutputId.innerText.length - 1 > 10)
+        {         
             errorId.style.fontSize = "3.8em";
             errorId.innerHTML = "Error: Exceeded";
             errorId.style.fontSize = "3.5em";
             errorOverlapOutput(1800);
             allClear();
+            
+        // If not, displaying the output and saving it for later
+        }else{
+            OutputId.innerHTML = Output;
+            beforeSign = Output;
+            inputString = Output;    
+        }
 
-        }else{
-            outputId.innerHTML = output;
-            inputString = output;
-            firstDigit = inputString;
-        }
-     
-        numberCount = 1;    
-        if(calcCount > 1 && signCount && numberCount){
+        // Caling this function if it's not the first calculation that was made
+        if(calcCount > 1 && signCount == 1){
             lastInput();
-        }else{
-            sign = "";  
         }
+        sign = "";
         signCount = 0;
-        secondDigit = undefined;
-    }else{
-        errorId.style.fontSize = "2em";
-        errorId.innerHTML = "Second number first!";
+        afterSign =  "";
+
+    // if the second value is equal to nothing, throwing an error that does not clear everything
+    }else if(inputString != "" && signCount == 1){
+        errorId.style.fontSize = "3.4em";
+        errorId.innerHTML = "Select a number first!";
         errorOverlapOutput(1800);
-        errorId.style.fontSize = "3.5em"
+    }else if(inputString != "" && signCount == 0){
+        errorId.style.fontSize = "3.4em";
+        errorId.innerHTML = "Select a sign first!";
+        errorOverlapOutput(1800);
     }
     
 }
@@ -130,7 +184,10 @@ function Equal()
 
 function lastInput()
 {
-    let lastinput = "["  + lastA + sign.replace("*", '\u{00D7}').replace("/", '\u{00F7}') + secondDigit + "=" + output + "]";
+    let lastinput = "["  + lastCalc + sign.replace("*", '\u{00D7}').replace("/", '\u{00F7}') + afterSign + "=" + Output + "]";
+    if(Output.toString().length > 12){
+        lastinput = "["  + lastCalc + sign.replace("*", '\u{00D7}').replace("/", '\u{00F7}') + afterSign + "=" + outputRounded + "]";
+    }
     lastInputId.innerHTML = lastinput;
     sign = "";
 }
@@ -139,83 +196,46 @@ function lastInput()
 
 function allClear()
 {
-    outputId.innerHTML ="0";
+    OutputId.innerHTML ="0";
     lastInputId.innerHTML = "";
+    inputString = "";
     calcCount = 0;
-    numberCount = 0;
     signCount = 0;
     sign = "";  
-    inputString = "";
-    output = 0;
-    secondDigit = undefined;
+    Output = 0;
+    beforeSign = "";
+    afterSign = "";
+    firstNumberCount = 0;
+    secondNumberCount = 0;
+    totalNumberCount = 0;
 }
 
-// Algorithm to make the calculator compatible with both keys and mouseclicks on buttons.
-const buttonsList = ['+', '-', '*', '/', 'Backspace', 'Enter'];
-['click', 'keydown'].forEach( event => {
+const buttons = ['+', '-', '*', '/', 'Backspace', 'Enter'];
 
-    // Keyboard Part
+// Using a system that checks to what id the pressed key, or given value, corresponds to
+['click', 'keydown'].forEach( event => {
+    // Keyboard
     if(event == 'keydown'){
-        document.getElementById("html").addEventListener(event, (key) => {  
-            if(key.key == (document.getElementById(key.key).id) && isNaN(key.key)){
-                    switch(key.key){
-                    case '*':
-                        signAssignment('\u{00D7}')
-                        break;
-                    case '/':
-                        signAssignment('\u{00F7}')
-                        break;
-                    case '=':
-                        Equal();
-                        break;
-                    case 'Enter':
-                        Equal();
-                        break;
-                    case 'Backspace':
-                        allClear();
-                        break;
-                    default:
-                        signAssignment(key.key)
-                        break; 
-                }
+        document.getElementById("html").addEventListener(event, (input) => {  
+            // If the key corresponds to an element, and is NaN, calling the non-numbers-button function, and giving it the key as a parameter
+            if(input.key == (document.getElementById(input.key).id) && isNaN(input.key)){
+                sideButtons(input.key);
             }
-            else if (!(isNaN(key.key))){
-                valueAssignment(key.key);
+            
+            // If the key is a number, calling the non-numbers function, and giving the key as a parameter
+            else if (!(isNaN(input.key))){
+                valueAssignment(input.key);
             }
         })
     
-    // Mouse part
+    // Mouse
+   
     }else{
         for(let i = 0; i < 10; i++){
-            let id = i;
-            document.getElementById(id).addEventListener(event, () => { 
-                valueAssignment(i);
-            })
+            document.getElementById(i).addEventListener(event, () => valueAssignment(i.toString()))
         }
-        for(let i = 0; i < buttonsList.length; i++){
-            let id = buttonsList[i];
-            document.getElementById(id).addEventListener(event, () =>{
-                switch(id){
-                    case '*':
-                        signAssignment('\u{00D7}')
-                        break;
-                    case '/':
-                        signAssignment('\u{00F7}')
-                        break;
-                    case '=':
-                        Equal();
-                        break;
-                    case 'Enter':
-                        Equal();
-                        break;
-                    case 'Backspace':
-                        allClear();
-                        break;
-                    default:
-                        signAssignment(id)
-                        break; 
-                }
-            })
-        }
+        for(const button of buttons){
+            document.getElementById(button).addEventListener(event, () => sideButtons(button));
+        }               
     } 
 })
