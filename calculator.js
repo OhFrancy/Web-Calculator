@@ -137,6 +137,10 @@ function Equal()
         if(Output.toString().length > 12){
             let round;  ``
             round = Output.toString().split("");
+            if(round[7] > 4)
+            {
+                round[6]++;
+            }
             outputRounded = round.splice(0, 7).join("");
             OutputId.innerHTML = outputRounded;
             beforeSign = outputRounded;
