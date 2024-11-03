@@ -135,7 +135,7 @@ function Equal()
         
         // Rounding system for recurring decimals, rounding to five significative figures
         if(Output.toString().length > 12){
-            let round;  ``
+            let round;
             round = Output.toString().split("");
             if(round[7] > 4)
             {
