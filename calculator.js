@@ -66,7 +66,7 @@ function valueAssignment(a)
 
 function signAssignment(signTemp)
 {
-    if(signCount == 0 && parseInt(beforeSign) >= 0 && !(totalNumberCount == 11))
+    if(signCount == 0 && beforeSign.toString().length > 0 && !(totalNumberCount == 11))
         { 
             signCount++;
             // If the signs are the ones in Unicode, adding it to the displayed string but changing the variable to the actual operator
@@ -81,7 +81,7 @@ function signAssignment(signTemp)
             inputString += signTemp;
             OutputId.innerHTML = inputString;
         // Throwing an 'error' if no numbers were selected before trying to add a sign
-        }else if( beforeSign == 0)
+        }else if(beforeSign.length == 0)
         {
             errorId.style.fontSize = "3.4em";
             errorId.innerHTML = "Select a number first!";
@@ -122,23 +122,15 @@ function Equal()
                 Output = (parseInt(beforeSign) * parseInt(afterSign));
                 break;
             case '/':
-                if(beforeSign != 0 || afterSign != 0){
-                    Output = (parseFloat(beforeSign) / parseFloat(afterSign));
-                // Throw an error if dividing 0 by 0
-                }else{
-                    errorId.innerHTML = "Undefined";
-                    errorOverlapOutput(2500);
-                    allClear();
-                }
+                Output = (parseFloat(beforeSign) / parseFloat(afterSign));
                 break;
         }
         
         // Rounding system for recurring decimals, rounding to five significative figures
         if(Output.toString().length > 12){
-            let round;
+            let round; 
             round = Output.toString().split("");
-            if(round[7] > 4)
-            {
+            if(round[7] > 4){
                 round[6]++;
             }
             outputRounded = round.splice(0, 7).join("");
@@ -160,7 +152,7 @@ function Equal()
         }else{
             OutputId.innerHTML = Output;
             beforeSign = Output;
-            inputString = Output;    
+            inputString = Output;   
         }
 
         // Caling this function if it's not the first calculation that was made
@@ -231,15 +223,23 @@ const buttons = ['+', '-', '*', '/', 'Backspace', 'Enter'];
                 valueAssignment(input.key);
             }
         })
-    
+
     // Mouse
-   
     }else{
-        for(let i = 0; i < 10; i++){
-            document.getElementById(i).addEventListener(event, () => valueAssignment(i.toString()))
-        }
         for(const button of buttons){
             document.getElementById(button).addEventListener(event, () => sideButtons(button));
         }               
     } 
 })
+
+// Filtering the zero, so that it only gets counted when it makes a difference in the calculation
+function zeroFilter(){
+    if(beforeSign.length == 0){
+    
+    }else if(signCount == 1 && afterSign.length == 0){
+
+
+    }else{
+        valueAssignment('0');
+    }
+}   
