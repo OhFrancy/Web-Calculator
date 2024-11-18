@@ -1,4 +1,4 @@
-Simple web calculator, made with HTML, CSS and JavaScript, takes only 2 INPUTS. Made with only basic knowledge and learning in the making process, everything was done with only basic terms and functions knowledge. It is an unpolished version and has many bugs, if you can care to report them, do it please.
+Simple web calculator, made with plain HTML, CSS and JavaScript, takes only 2 INPUTS. Made with only basic knowledge and learning in the making process, everything was done with only basic terms and functions knowledge. It is an unpolished version and has many bugs, if you can care to report them, do it please.
 
 It's a plain html, CSS and JS code, to run it just put all of them in one folder and open the .html. 
 (If you want to edit the code I personally recommend the live-server extension on VSCode).
