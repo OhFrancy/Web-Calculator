@@ -3,24 +3,24 @@
 /* Declaring all fonts */
 @font-face {
   font-family: 'CreamBeige';
-  src: url("font/CreamBeige.ttf") format('truetype'),
-       url("font/CreamBeige.otf") format('opentype');
+  src: url("/font/CreamBeige.ttf") format('truetype'),
+       url("/font/CreamBeige.otf") format('opentype');
 }
 @font-face 
 {
   font-family: 'DigitalFont';
-  src: url("font/DigitalFont.ttf") format('truetype');
+  src: url("/font/DigitalFont.ttf") format('truetype');
 }
 @font-face
 {
   font-family: 'SmothyBubble';
-  src: url("font/SmothyBubble.otf") format('opentype');
+  src: url("/font/SmothyBubble.otf") format('opentype');
 }
 @font-face
 {
   font-family: 'Dear';
-  src: url("font/Dear.otf") format('truetype'),
-       url("font/Dear.ttf") format('opentype');
+  src: url("/font/Dear.otf") format('truetype'),
+       url("/font/Dear.ttf") format('opentype');
 }
 
 
