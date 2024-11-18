@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html id="html"lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Loading CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel='icon' type="image/png" href="/images/calculatorimg.png">
+    <title>Web Calculator</title>
+</head>
+<body>
+    <!-- First Wrapper Div that has all the page content in it -->
+    <div class="wrapper">
+        <!-- h1 Inline Title -->    
+        <h1 class="inlineTitle">Web <em>Calculator</em>:</h1>
+        <!-- div container of the calculator body as a whole -->
+        <div class="calculatorBody">
+            <!-- div container of the calc 'screen' where the value is displayed-->
+            <div class="outputScreen">
+                <!-- paragraph with the number value in it, assigned through JS -->
+                <p class="output" id="output">0</p>
+            </div>
+
+            <!-- div container of the errors that are displayed in some cases and that overlaps the output -- see JS -->
+            <div class="errorOutput">
+                <!-- paragraph with errors in it, assigned by JS -->
+                <p class="error" id="error"></p>
+            </div>
+            <!-- div container of the last displayed input and output; Ex: a + b = c -->
+            <div class="topCornerLastInput">
+                <!-- paragraph with the value of the last input and output-->
+                <p class="lastInput" id="lastInput"></p>
+            </div>
+
+            <!-- div container of the 10 numbers buttons and paragraphs -->
+            <div class="numbers">
+                <!-- For every number from 0 - 9, sets the button and paragraph -->
+                <button class="oneButton" onclick="valueAssignment('1')"><p class="one">1</p></button>
+                <button class="twoButton" onclick="valueAssignment('2')"><p class="two">2</p></button>
+                <button class="threeButton" onclick="valueAssignment('3')"><p class="three">3</p></button>
+                <button class="fourButton" onclick="valueAssignment('4')"><p class="four">4</p></button>
+                <button class="fiveButton" onclick="valueAssignment('5')"><p class="five">5</p></button>
+                <button class="sixButton" onclick="valueAssignment('6')"><p class="six">6</p></button>
+                <button class="sevenButton" onclick="valueAssignment('7')"><p class="seven">7</p></button>
+                <button class="eightButton" onclick="valueAssignment('8')"><p class="eight">8</p></button>
+                <button class="nineButton" onclick="valueAssignment('9')"><p class="nine">9</p></button>
+                <button class="zeroButton" onclick="zeroFilter();"><p class="zero">0</p></button>
+            </div>
+            <!-- div container of the 4 operators buttons and paragraphs -->
+            <div class = "operators">
+                <!-- Sets the button and paragraph for every function that the calculator has, such as operators and CE -->
+                <button class="plusButton" id="+"><p class="plus">+</p></button>
+                <button class="minusButton" id="-"><p class="minus">-</p></button>
+                <button class="multiplyButton" id="*"><p class="multiply" >&times;</p></button>
+                <button class="divisionButton" id="/"><p class="division">&#247;</p></button>
+                <button class="clearButton" id="Backspace"><p class="clear">AC</p></button>
+                <button class="equalButton" id="Enter"><p class="equal">=</p></button>
+            </div>
+        </div>                    
+    </div>
+    <!-- Loading JS Script -->
+    <script src = "calculator.js"></script>
+</body> 
+</html>
